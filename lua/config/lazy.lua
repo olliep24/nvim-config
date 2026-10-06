@@ -33,10 +33,17 @@ require("lazy").setup({
     -- import your plugins
     { import = "plugins" },
   },
+  -- In Cursor/VS Code (vscode-neovim), disable every plugin unless its spec
+  -- opts in with `vscode = true`. The editor handles UI, LSP, and completion.
+  defaults = {
+    cond = function(plugin)
+      return not vim.g.vscode or plugin.vscode
+    end,
+  },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = { enabled = not vim.g.vscode },
 })
 

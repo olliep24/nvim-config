@@ -16,6 +16,11 @@ vim.opt.smartcase = true        -- ...unless you type a capital letter
 vim.opt.clipboard = "unnamedplus"  -- yank/paste shares your OS clipboard (huge one — without this, y and p only work within vim)
 vim.opt.mouse = "a"             -- mouse still works if you want it (scrolling, resizing splits)
 
+-- Everything below is terminal-only; Cursor manages its own UI, splits, and undo
+if vim.g.vscode then
+  return
+end
+
 -- UI/UX
 vim.opt.termguicolors = true    -- true 24-bit color, colorschemes look right
 vim.opt.scrolloff = 8           -- keeps 8 lines of context above/below cursor when scrolling
